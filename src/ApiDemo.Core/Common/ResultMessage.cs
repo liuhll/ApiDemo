@@ -15,7 +15,11 @@ namespace ApiDemo.Core.Common
         //   where TData : class 
     {
 
-
+        public ResultMessage()
+        {
+            Code = ResultCode.Fail;
+            Msg = "Fail";
+        }
 
         /// <summary>
         /// 正确返回结果集时使用

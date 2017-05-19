@@ -2,12 +2,14 @@
 using System.Web.Http;
 using ApiDemo.Controllers.Base;
 using ApiDemo.Core.AppService;
+using ApiDemo.Core.Common;
+using ApiDemo.Core.Common.Enum;
 using ApiDemo.Core.Entities;
 using ApiDemo.Dtos;
 
 namespace ApiDemo.Controllers.V1
 {
-    [System.Web.Http.RoutePrefix("api/v1")]
+    [RoutePrefix("api/v1")]
     public class StudentController : V1ControllerBase
     {
         private readonly IStudentAppService _studentAppService;
@@ -17,9 +19,9 @@ namespace ApiDemo.Controllers.V1
             _studentAppService = studentAppService;
         }
 
-        [System.Web.Http.Route("Student")]
-        [System.Web.Http.HttpPost]
-        public string Student([FromBody]StudentInput studentInput)
+        [Route("Student")]
+        [HttpPost]
+        public ResultMessage<string> Student([FromBody]StudentInput studentInput)
         {
             try
             {
@@ -32,14 +34,14 @@ namespace ApiDemo.Controllers.V1
                 };
                 if (_studentAppService.Insert(student))
                 {
-                    return "新增成功";
+                    return new ResultMessage<string>("新增成功");
                 }
-                return "新增失败";
+                return new ResultMessage<string>(ResultCode.Fail, "新增失败");
             }
             catch (Exception ex)
             {
 
-                return "异常:" + ex.Message;
+                return new ResultMessage<string>(ResultCode.ServiceError, "异常:" + ex.Message);
             }
         }
     }
