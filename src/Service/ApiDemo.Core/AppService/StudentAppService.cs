@@ -17,6 +17,11 @@ namespace ApiDemo.Core.AppService
             _studentDao = studentDao;
         }
 
+        public StudentAppService()
+        {
+            // TODO: Complete member initialization
+        }
+
 
         public bool Insert(Student student)
         {

@@ -55,6 +55,7 @@
     <Compile Include="AppService\IAppCodeAppService.cs" />
     <Compile Include="AppService\IStudentAppService.cs" />
     <Compile Include="AppService\StudentAppService.cs" />
+    <Compile Include="AppService\WebServiceImpl\StudentAppService.cs" />
     <Compile Include="Common\Enum\ResultCode.cs" />
     <Compile Include="Common\Exception\ApiAuthorizeException.cs" />
     <Compile Include="Common\ResultMessage.cs" />

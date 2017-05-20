@@ -11,7 +11,7 @@ namespace ApiDemo.WebService.Auth
     public delegate void WebServiceAuthenticationEventHandler(Object sender, WebServiceAuthenticationEvent e);
 
     /// <summary>
-    /// 中间件，负责拦截请求
+    /// 中间件，负责拦截请求 AOP拦截
     /// </summary>
     public sealed class WebServiceAuthenticationModule : IHttpModule
     {
@@ -30,6 +30,7 @@ namespace ApiDemo.WebService.Auth
 
         public void Init(HttpApplication app)
         {
+            // 核心代码
             app.AuthenticateRequest += new EventHandler(this.OnEnter);
                        
         }
