@@ -178,7 +178,8 @@
     <Compile Include="Controllers\V1\StudentController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Dtos\Base\BasicDto.cs" />
-    <Compile Include="Dtos\StudentInput.cs" />
+    <Compile Include="Dtos\Student\StudentInput.cs" />
+    <Compile Include="Dtos\Student\StudentOutput.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>

@@ -31,5 +31,15 @@ namespace ApiDemo.Core.Dao
         {
             throw new NotImplementedException();
         }
+
+        public bool Delete(int id)
+        {
+            using (var ctx = new DemoContext())
+            {
+                var delStudent = Get(id);
+                ctx.Students.Remove(delStudent);
+                return ctx.SaveChanges() > 0;
+            }
+        }
     }
 }

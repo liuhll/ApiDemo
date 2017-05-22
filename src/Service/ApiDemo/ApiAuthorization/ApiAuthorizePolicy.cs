@@ -50,7 +50,7 @@ namespace ApiDemo.ApiAuthorization
             {
                 throw new Exception("不存在的appid");
             }
-            _paramList.Add("secretkey", Regex.Replace(appKey.AppKey, @"\s", ""));
+            _paramList.Add("appkey", Regex.Replace(appKey.AppKey, @"\s", ""));
             var encryptedStr = GetSignContent(_paramList);
             var isLegalSign = EncryptionHelper.EncryptSHA256(encryptedStr).Equals(_sign);
             if (!isLegalSign)

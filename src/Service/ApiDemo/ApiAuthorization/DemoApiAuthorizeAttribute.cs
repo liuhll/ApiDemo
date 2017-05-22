@@ -74,6 +74,7 @@ namespace ApiDemo.ApiAuthorization
             else
             {
                 //actionContext.Request.Content
+                // :todo 判断请求的数据是xml还是json
                 Task<string> content = actionContext.Request.Content.ReadAsStringAsync();
                 string body = content.Result;
                 var data = (JObject)JsonConvert.DeserializeObject(body);

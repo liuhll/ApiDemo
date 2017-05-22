@@ -1,13 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using ApiDemo.Dtos.Base;
-
-namespace ApiDemo.Dtos
+﻿namespace WebApi.Client.Models
 {
-    public class StudentInput : BasicDto
+    public class Student
     {
+        /// <summary>
+        /// 学号
+        /// </summary>
+        public int Id { get; set; }
+
         /// <summary>
         /// 学生姓名
         /// </summary>

@@ -37,5 +37,10 @@ namespace ApiDemo.Core.AppService
         {
             return _studentDao.GetStudents(func);
         }
+
+        public bool Delete(int id)
+        {
+            return _studentDao.Delete(id);
+        }
     }
 }

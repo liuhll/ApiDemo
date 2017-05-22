@@ -1,16 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Script.Serialization;
 using System.Web.Services;
 using ApiDemo.Core.Common;
 using ApiDemo.Core.Common.Enum;
 using ApiDemo.WebService.Dtos.Basic;
-using Autofac;
 using System.Web.Services.Protocols;
 using ApiDemo.Core.AppService;
-using ApiDemo.Core.AppService.WebServiceImpl;
 using ApiDemo.WebService.Auth;
 using WebAppService = ApiDemo.Core.AppService.WebServiceImpl;
 
@@ -41,19 +35,30 @@ namespace ApiDemo.WebService
         public ResultMessage<StudentOutput> GetStudent(int id)
         {
 
-            //if (User.IsInRole("Customer"))
-            //    return new ResultMessage<StudentOutput>(ResultCode.NotAllowed,"验证失败权限");
+            //可以通过存储在数据库中的用户与密码来验证
+            try
+            {
+                if (authentication.User.Equals("demoapi") & authentication.Password.Equals("demoapi"))
+                {
 
-            //if (User.Identity.IsAuthenticated)
-            //    return  new ResultMessage<StudentOutput>(ResultCode.Success,"Ok",new StudentOutput()
-            //    {
-            //        Age = 10,
-            //        Name = "张三"
-            //    });
+                    var student = _studentAppService.Get(id);
+                    return new ResultMessage<StudentOutput>(new StudentOutput()
+                    {
+                        Id = student.Id,
+                        Age = student.Age,
+                        Name = student.Name
+                    });
+                }
+                else
+                {
+                    return new ResultMessage<StudentOutput>(ResultCode.Fail, "对不起，您没有权限调用此服务！");
+                }
+            }
+            catch (Exception e)
+            {
+                return new ResultMessage<StudentOutput>(ResultCode.ServiceError, "服务器异常" + e.Message);
+            }
 
-            var stu = _studentAppService.Get(id);
-
-            return new ResultMessage<StudentOutput>(ResultCode.NotAllowed,"没有权限");
         }
 
     }

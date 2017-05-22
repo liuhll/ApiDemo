@@ -15,5 +15,7 @@ namespace ApiDemo.Core.Dao
         Student Get(int id);
 
         IList<Student> GetStudents(Func<Student, bool> func);
+
+        bool Delete(int id);
     }
 }

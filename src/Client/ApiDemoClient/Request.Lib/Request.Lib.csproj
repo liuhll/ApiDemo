@@ -30,7 +30,16 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="LitJson, Version=0.7.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\LitJson.0.7.0\lib\LitJson.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="RestSharp, Version=105.2.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\RestSharp.105.2.3\lib\net45\RestSharp.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -39,9 +48,26 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
+    <Compile Include="Common\DataFormat.cs" />
+    <Compile Include="Common\Method.cs" />
+    <Compile Include="Common\ResultCode.cs" />
+    <Compile Include="Common\ResultMessage.cs" />
+    <Compile Include="Common\Tools\ConfigHelper.cs" />
+    <Compile Include="Common\Tools\DateTimeHelper.cs" />
+    <Compile Include="Common\Tools\EncryptionHelper.cs" />
+    <Compile Include="Data\RequestParams.cs" />
+    <Compile Include="IClientFactory.cs" />
+    <Compile Include="IRequest.cs" />
+    <Compile Include="IRequestFactory .cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ClientFactory.cs" />
+    <Compile Include="Request.cs" />
+    <Compile Include="RequestFactory.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
